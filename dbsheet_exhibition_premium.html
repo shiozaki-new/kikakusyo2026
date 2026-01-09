@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dbSheet - 人に依存しない改善が、現場から続く</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    
+    /* ===== Hero Section ===== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    }
+    
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 10px 28px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 100px;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 48px;
+      backdrop-filter: blur(10px);
+      text-transform: uppercase;
+    }
+    
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+    
+    .hero-title-accent {
+      background: linear-gradient(90deg, #60a5fa, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+    }
+    
+    .hero-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, #2563eb, #059669);
+      margin: 56px auto 0;
+    }
+    
+    /* ===== Common Section Styles ===== */
+    .section {
+      padding: 140px 24px;
+      position: relative;
+    }
+    
+    .section-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      margin-bottom: 72px;
+    }
+    
+    .section-number {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #2563eb;
+      letter-spacing: 0.25em;
+      margin-bottom: 20px;
+      padding: 6px 14px;
+      background: #eff6ff;
+      border-radius: 4px;
+    }
+    
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 600;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+    
+    /* ===== Problem Section ===== */
+    .problem-section {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+    
+    .problem-content {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 100px;
+      align-items: start;
+    }
+    
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .problem-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 28px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .problem-item:hover {
+      transform: translateX(12px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+    
+    .problem-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      color: #dc2626;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    
+    .problem-item p {
+      font-size: 15px;
+      color: #334155;
+      font-weight: 400;
+    }
+    
+    /* Pyramid Diagram */
+    .pyramid-diagram {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding-top: 20px;
+    }
+    
+    .pyramid-level {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 40px;
+      text-align: center;
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pyramid-level:hover {
+      transform: scale(1.02);
+    }
+    
+    .pyramid-level span {
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    .pyramid-level-1 {
+      width: 80%;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      color: #ffffff;
+    }
+    
+    .pyramid-level-2 {
+      width: 90%;
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+      color: #ffffff;
+    }
+    
+    .pyramid-level-3 {
+      width: 100%;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      color: #1e40af;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+    }
+    
+    .pyramid-connector {
+      width: 4px;
+      height: 28px;
+      background: linear-gradient(180deg, transparent, #cbd5e1);
+      position: relative;
+    }
+    
+    .pyramid-connector::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid #cbd5e1;
+    }
+    
+    /* ===== Position Section ===== */
+    .position-section {
+      background: #ffffff;
+    }
+    
+    .position-points {
+      display: flex;
+      gap: 56px;
+      margin-bottom: 100px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .position-point {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    
+    .point-marker {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+    }
+    
+    .position-point span {
+      font-size: 15px;
+      color: #334155;
+      font-weight: 500;
+    }
+    
+    /* Flow Diagram */
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    
+    .flow-node {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    
+    .flow-node:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+    
+    .flow-node-start,
+    .flow-node-end {
+      width: 180px;
+    }
+    
+    .flow-node-header {
+      padding: 18px 28px;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      font-weight: 700;
+      font-size: 17px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      letter-spacing: 0.02em;
+    }
+    
+    .flow-node-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+    
+    .flow-node-body span {
+      font-size: 14px;
+      color: #64748b;
+    }
+    
+    .flow-node-center {
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      box-shadow: 0 24px 48px rgba(37, 99, 235, 0.35);
+      position: relative;
+    }
+    
+    .flow-node-center::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 27px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      z-index: -1;
+    }
+    
+    .flow-node-brand {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+    
+    .flow-arrow {
+      color: #2563eb;
+      width: 70px;
+    }
+    
+    .flow-arrow svg {
+      width: 100%;
+      height: auto;
+    }
+    
+    /* ===== Value Section ===== */
+    .value-section {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+    
+    .value-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 100px;
+    }
+    
+    .value-card {
+      background: #ffffff;
+      padding: 40px 32px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+      border-color: #bfdbfe;
+    }
+    
+    .value-card-number {
+      font-size: 11px;
+      font-weight: 800;
+      color: #2563eb;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      padding: 6px 12px;
+      background: #eff6ff;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    
+    .value-card p {
+      font-size: 17px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    
+    /* Cycle Diagram */
+    .cycle-diagram {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      margin: 0 auto;
+    }
+    
+    .cycle-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+      padding: 20px;
+    }
+    
+    .cycle-center span {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: #059669;
+      line-height: 1.5;
+    }
+    
+    .cycle-ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .cycle-item {
+      position: absolute;
+      width: 105px;
+      height: 105px;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      border: 3px solid #059669;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.15);
+    }
+    
+    .cycle-item:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 32px rgba(5, 150, 105, 0.25);
+    }
+    
+    .cycle-item-highlight {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      border-color: #1d4ed8;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    }
+    
+    .cycle-item-highlight .cycle-num,
+    .cycle-item-highlight .cycle-text {
+      color: #ffffff;
+    }
+    
+    .cycle-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: #059669;
+      margin-bottom: 4px;
+    }
+    
+    .cycle-text {
+      font-size: 12px;
+      color: #065f46;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+    
+    .cycle-item-1 { top: -5px; left: 50%; transform: translateX(-50%); }
+    .cycle-item-2 { top: 18%; right: 2%; }
+    .cycle-item-3 { bottom: 8%; right: 10%; }
+    .cycle-item-4 { bottom: 8%; left: 10%; }
+    .cycle-item-5 { top: 18%; left: 2%; }
+    
+    .cycle-item-1:hover { transform: translateX(-50%) scale(1.12); }
+    
+    /* ===== Compare Section ===== */
+    .compare-section {
+      background: #ffffff;
+    }
+    
+    .compare-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    
+    .compare-card {
+      width: 340px;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    
+    .compare-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    }
+    
+    .compare-card-before {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .compare-card-after {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 1px solid #bfdbfe;
+    }
+    
+    .compare-card-header {
+      padding: 28px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    
+    .compare-card-before .compare-card-header {
+      background: linear-gradient(135deg, #64748b, #475569);
+      color: #ffffff;
+    }
+    
+    .compare-card-after .compare-card-header {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+    }
+    
+    .compare-card-body {
+      padding: 36px;
+    }
+    
+    .compare-item {
+      text-align: center;
+      font-size: 16px;
+      color: #334155;
+      padding: 14px 0;
+      font-weight: 500;
+    }
+    
+    .compare-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+      margin: 8px 0;
+    }
+    
+    .compare-item-highlight-negative {
+      color: #dc2626;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    
+    .compare-item-highlight-positive {
+      color: #2563eb;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    
+    .compare-arrow {
+      color: #0f172a;
+      width: 90px;
+    }
+    
+    .compare-arrow svg {
+      width: 100%;
+      height: auto;
+    }
+    
+    /* ===== AI Section ===== */
+    .ai-section {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    }
+    
+    .role-diagram {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    
+    .role-card {
+      width: 240px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+    
+    .role-card:hover {
+      transform: scale(1.04);
+      z-index: 3;
+    }
+    
+    .role-card-human {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #f59e0b;
+      box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2);
+    }
+    
+    .role-card-ai {
+      background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+      border: 3px solid #14b8a6;
+      box-shadow: 0 8px 32px rgba(20, 184, 166, 0.2);
+    }
+    
+    .role-card-header {
+      padding: 24px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    
+    .role-card-human .role-card-header {
+      color: #92400e;
+    }
+    
+    .role-card-ai .role-card-header {
+      color: #0f766e;
+    }
+    
+    .role-card-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    
+    .role-item {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    
+    .role-card-human .role-item {
+      color: #78350f;
+    }
+    
+    .role-card-ai .role-item {
+      color: #134e4a;
+    }
+    
+    .role-arrow {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      bottom: 35%;
+      z-index: 3;
+    }
+    
+    .role-arrow-right {
+      right: -22px;
+      color: #f59e0b;
+    }
+    
+    .role-arrow-left {
+      left: -22px;
+      color: #14b8a6;
+    }
+    
+    .role-center {
+      width: 180px;
+      padding: 48px 24px;
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      border: 3px dashed #94a3b8;
+      border-radius: 20px;
+      text-align: center;
+      margin: 0 -20px;
+      z-index: 1;
+      align-self: center;
+    }
+    
+    .role-center-label {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+    
+    .role-center-brand {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+    
+    /* ===== Lead Section ===== */
+    .lead-section {
+      background: #ffffff;
+    }
+    
+    .lead-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 420px;
+      margin: 0 auto 56px;
+    }
+    
+    .lead-step {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      padding: 22px 32px;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .lead-step:hover {
+      transform: translateX(12px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+    }
+    
+    .lead-step-final {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      border-color: #1d4ed8;
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+    }
+    
+    .lead-step-final:hover {
+      transform: translateX(12px) scale(1.02);
+    }
+    
+    .lead-step-final .lead-step-number {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    
+    .lead-step-final .lead-step-label {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 17px;
+    }
+    
+    .lead-step-number {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .lead-step-label {
+      font-size: 15px;
+      color: #1e40af;
+      font-weight: 500;
+    }
+    
+    .lead-connector {
+      width: 4px;
+      height: 28px;
+      background: linear-gradient(180deg, #bfdbfe, #93c5fd);
+      position: relative;
+    }
+    
+    .lead-connector::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #93c5fd;
+    }
+    
+    .lead-connector-final {
+      height: 36px;
+      background: linear-gradient(180deg, #3b82f6, #2563eb);
+    }
+    
+    .lead-connector-final::after {
+      border-top-color: #2563eb;
+    }
+    
+    .lead-result {
+      text-align: center;
+      padding: 32px;
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      border-radius: 16px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    
+    .lead-result-prefix {
+      display: block;
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+    
+    .lead-result-main {
+      font-size: 24px;
+      font-weight: 800;
+      color: #dc2626;
+    }
+    
+    /* ===== CTA Section ===== */
+    .cta-section {
+      padding: 120px 24px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    }
+    
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 3.5vw, 32px);
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+    
+    .cta-underline {
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #059669);
+      margin: 40px auto 0;
+      border-radius: 2px;
+    }
+    
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .section {
+        padding: 100px 20px;
+      }
+      
+      .problem-content {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+      
+      .value-cards {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .flow-diagram {
+        flex-direction: column;
+      }
+      
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+      
+      .compare-grid {
+        flex-direction: column;
+      }
+      
+      .compare-arrow {
+        transform: rotate(90deg);
+      }
+      
+      .role-diagram {
+        flex-direction: column;
+        gap: 24px;
+      }
+      
+      .role-center {
+        margin: 0;
+        order: -1;
+      }
+      
+      .role-arrow {
+        display: none;
+      }
+      
+      .cycle-diagram {
+        transform: scale(0.85);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .section {
+        padding: 80px 16px;
+      }
+      
+      .hero-content {
+        padding: 20px;
+      }
+      
+      .section-header {
+        margin-bottom: 48px;
+      }
+      
+      .position-points {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+      
+      .cycle-diagram {
+        transform: scale(0.65);
+      }
+      
+      .compare-card {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Hero Section ===== -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-badge">dbSheet</div>
+    <h1 class="hero-title">
+      人に依存しない改善が、<br>
+      <span class="hero-title-accent">現場から続く</span>
+    </h1>
+    <p class="hero-subtitle">現場で直せて、経営に残るExcel基盤</p>
+    <div class="hero-divider"></div>
+  </div>
+</section>
+
+<!-- ===== Problem Section ===== -->
+<section class="section problem-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">なぜ改善が止まるのか</h2>
+    </div>
+    
+    <div class="problem-content">
+      <div class="problem-list">
+        <div class="problem-item">
+          <div class="problem-icon">!</div>
+          <p>Excelは便利だが、人に依存しやすい</p>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon">!</div>
+          <p>外注すると改善が止まる</p>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon">!</div>
+          <p>人が変わるたびに会社が弱くなる</p>
+        </div>
+      </div>
+      
+      <div class="pyramid-diagram">
+        <div class="pyramid-level pyramid-level-1">
+          <span>人が変わっても、考え続けられる会社でありたい</span>
+        </div>
+        <div class="pyramid-connector"></div>
+        <div class="pyramid-level pyramid-level-2">
+          <span>現場を止めずに改善したい</span>
+        </div>
+        <div class="pyramid-connector"></div>
+        <div class="pyramid-level pyramid-level-3">
+          <span>Excelで入力したい</span>
+          <span>柔軟に変更したい</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Position Section ===== -->
+<section class="section position-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">dbSheetの立ち位置</h2>
+    </div>
+    
+    <div class="position-points">
+      <div class="position-point">
+        <div class="point-marker"></div>
+        <span>現場で使える</span>
+      </div>
+      <div class="position-point">
+        <div class="point-marker"></div>
+        <span>経営で管理できる</span>
+      </div>
+      <div class="position-point">
+        <div class="point-marker"></div>
+        <span>改善が資産として残る</span>
+      </div>
+    </div>
+    
+    <div class="flow-diagram">
+      <div class="flow-node flow-node-start">
+        <div class="flow-node-header">現場</div>
+        <div class="flow-node-body">
+          <span>Excel入力</span>
+          <span>現場変更</span>
+        </div>
+      </div>
+      
+      <div class="flow-arrow">
+        <svg viewBox="0 0 60 24" fill="none">
+          <path d="M0 12H50M50 12L40 4M50 12L40 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <div class="flow-node flow-node-center">
+        <span class="flow-node-brand">dbSheet</span>
+      </div>
+      
+      <div class="flow-arrow">
+        <svg viewBox="0 0 60 24" fill="none">
+          <path d="M0 12H50M50 12L40 4M50 12L40 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <div class="flow-node flow-node-end">
+        <div class="flow-node-header">経営</div>
+        <div class="flow-node-body">
+          <span>判断</span>
+          <span>管理</span>
+          <span>資産化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Value Section ===== -->
+<section class="section value-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">dbSheetが満たす3つの価値</h2>
+    </div>
+    
+    <div class="value-cards">
+      <div class="value-card">
+        <div class="value-card-number">01</div>
+        <p>現場で考えられる</p>
+      </div>
+      <div class="value-card">
+        <div class="value-card-number">02</div>
+        <p>現場で直せる</p>
+      </div>
+      <div class="value-card">
+        <div class="value-card-number">03</div>
+        <p>会社として続けられる</p>
+      </div>
+    </div>
+    
+    <div class="cycle-diagram">
+      <div class="cycle-center">
+        <span>改善が止まらない</span>
+        <span>仕組み</span>
+      </div>
+      <div class="cycle-item cycle-item-1">
+        <span class="cycle-num">1</span>
+        <span class="cycle-text">現場で<br>気づく</span>
+      </div>
+      <div class="cycle-item cycle-item-2">
+        <span class="cycle-num">2</span>
+        <span class="cycle-text">現場で<br>直す</span>
+      </div>
+      <div class="cycle-item cycle-item-3 cycle-item-highlight">
+        <span class="cycle-num">3</span>
+        <span class="cycle-text">dbSheetに<br>残る</span>
+      </div>
+      <div class="cycle-item cycle-item-4">
+        <span class="cycle-num">4</span>
+        <span class="cycle-text">経営に<br>活かされる</span>
+      </div>
+      <div class="cycle-item cycle-item-5">
+        <span class="cycle-num">5</span>
+        <span class="cycle-text">次の改善に<br>つながる</span>
+      </div>
+      <svg class="cycle-ring" viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="145" fill="none" stroke="#d1fae5" stroke-width="3" />
+        <path d="M200,55 A145,145 0 1,1 68,268" fill="none" stroke="#059669" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 5" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Compare Section ===== -->
+<section class="section compare-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">導入前 / 導入後</h2>
+    </div>
+    
+    <div class="compare-grid">
+      <div class="compare-card compare-card-before">
+        <div class="compare-card-header">導入前</div>
+        <div class="compare-card-body">
+          <div class="compare-item">属人化</div>
+          <div class="compare-divider"></div>
+          <div class="compare-item">外注待ち</div>
+          <div class="compare-divider"></div>
+          <div class="compare-item compare-item-highlight-negative">改善が止まる</div>
+        </div>
+      </div>
+      
+      <div class="compare-arrow">
+        <svg viewBox="0 0 80 40" fill="none">
+          <path d="M0 20H65M65 20L50 8M65 20L50 32" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <div class="compare-card compare-card-after">
+        <div class="compare-card-header">導入後</div>
+        <div class="compare-card-body">
+          <div class="compare-item">現場で変更</div>
+          <div class="compare-divider"></div>
+          <div class="compare-item">内製化</div>
+          <div class="compare-divider"></div>
+          <div class="compare-item compare-item-highlight-positive">改善が続く</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI Section ===== -->
+<section class="section ai-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">人とAIエージェントの役割</h2>
+    </div>
+    
+    <div class="role-diagram">
+      <div class="role-card role-card-human">
+        <div class="role-card-header">人</div>
+        <div class="role-card-body">
+          <div class="role-item">考える</div>
+          <div class="role-item">判断する</div>
+          <div class="role-item">設計する</div>
+        </div>
+        <div class="role-arrow role-arrow-right">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M5 20H30M30 20L22 12M30 20L22 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="role-center">
+        <div class="role-center-label">共通基盤</div>
+        <div class="role-center-brand">dbSheet</div>
+      </div>
+      
+      <div class="role-card role-card-ai">
+        <div class="role-card-header">AIエージェント</div>
+        <div class="role-card-body">
+          <div class="role-item">実装</div>
+          <div class="role-item">修正</div>
+          <div class="role-item">記録</div>
+        </div>
+        <div class="role-arrow role-arrow-left">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M35 20H10M10 20L18 12M10 20L18 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Lead Section ===== -->
+<section class="section lead-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">リード獲得自動化の流れ</h2>
+    </div>
+    
+    <div class="lead-flow">
+      <div class="lead-step">
+        <div class="lead-step-number">1</div>
+        <div class="lead-step-content">
+          <span class="lead-step-label">サムネで理解</span>
+        </div>
+      </div>
+      <div class="lead-connector"></div>
+      
+      <div class="lead-step">
+        <div class="lead-step-number">2</div>
+        <div class="lead-step-content">
+          <span class="lead-step-label">WEB・動画で共感</span>
+        </div>
+      </div>
+      <div class="lead-connector"></div>
+      
+      <div class="lead-step">
+        <div class="lead-step-number">3</div>
+        <div class="lead-step-content">
+          <span class="lead-step-label">デモで体感</span>
+        </div>
+      </div>
+      <div class="lead-connector"></div>
+      
+      <div class="lead-step">
+        <div class="lead-step-number">4</div>
+        <div class="lead-step-content">
+          <span class="lead-step-label">パンフレットで整理</span>
+        </div>
+      </div>
+      <div class="lead-connector lead-connector-final"></div>
+      
+      <div class="lead-step lead-step-final">
+        <div class="lead-step-number">5</div>
+        <div class="lead-step-content">
+          <span class="lead-step-label">商談</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="lead-result">
+      <span class="lead-result-prefix">ここまでに、</span>
+      <span class="lead-result-main">「質の高いリードだけが残る」</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA Section ===== -->
+<section class="cta-section">
+  <div class="cta-content">
+    <p class="cta-text">まずはデモで体感してください</p>
+    <div class="cta-underline"></div>
+  </div>
+</section>
+
+</body>
+</html>
