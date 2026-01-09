@@ -196,6 +196,15 @@
       animation: scaleIn 0.8s ease-out 1s both;
     }
     
+    .hero-author {
+      margin-top: 32px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      animation: fadeInUp 1s ease-out 1.2s both;
+    }
+    
     /* ===== Common Section Styles ===== */
     .section {
       padding: 160px 32px;
@@ -1211,6 +1220,15 @@
       box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
     }
     
+    .department-zone-planning .lead-card-cta {
+      background: linear-gradient(135deg, #d4a012, #b8860b);
+      box-shadow: 0 4px 16px rgba(201, 162, 39, 0.4);
+    }
+    
+    .department-zone-planning .lead-card-cta:hover {
+      box-shadow: 0 8px 24px rgba(201, 162, 39, 0.5);
+    }
+    
     .lead-connector-deep {
       display: flex;
       justify-content: center;
@@ -1234,8 +1252,9 @@
     }
     
     .department-zone-planning {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(37, 99, 235, 0.08));
-      border: 2px solid rgba(37, 99, 235, 0.2);
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.06), rgba(245, 158, 11, 0.12));
+      border: 3px solid rgba(201, 162, 39, 0.4);
+      box-shadow: 0 8px 32px rgba(201, 162, 39, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
     
     .department-zone-sales {
@@ -1259,8 +1278,9 @@
     }
     
     .department-zone-planning .department-zone-label {
-      background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+      background: linear-gradient(135deg, #d4a012, #c9a227);
       color: #ffffff;
+      box-shadow: var(--shadow-lg), 0 4px 20px rgba(201, 162, 39, 0.4);
     }
     
     .department-zone-sales .department-zone-label {
@@ -1293,6 +1313,11 @@
       height: 40px;
       color: var(--color-accent);
       filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.3));
+    }
+    
+    .department-zone-planning .department-zone-inner .lead-connector-deep svg {
+      color: var(--color-gold);
+      filter: drop-shadow(0 2px 6px rgba(201, 162, 39, 0.4));
     }
     
     .department-zone-sales .department-zone-connector svg {
@@ -1486,6 +1511,49 @@
       border-radius: 2px;
     }
     
+    /* ===== Footer ===== */
+    .site-footer {
+      background: linear-gradient(180deg, #050d1a 0%, #030810 100%);
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+    }
+    
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    
+    .footer-copyright {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    
     /* ===== Responsive ===== */
     @media (max-width: 900px) {
       .section {
@@ -1523,8 +1591,8 @@
       
       .pyramid-needs {
         text-align: left;
-        flex-direction: column;
-        gap: 8px;
+        flex-direction: row;
+        gap: 16px;
       }
       
       .value-cards {
@@ -1551,13 +1619,36 @@
       }
       
       .role-diagram {
-        flex-direction: column;
-        gap: 24px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
       }
       
       .role-center {
-        margin: 0;
+        width: 100%;
+        margin: 0 0 8px 0;
         order: -1;
+        padding: 24px 20px;
+      }
+      
+      .role-card {
+        width: calc(50% - 8px);
+        min-width: 140px;
+      }
+      
+      .role-card-header {
+        padding: 16px;
+        font-size: 18px;
+      }
+      
+      .role-card-body {
+        padding: 16px;
+        gap: 12px;
+      }
+      
+      .role-item {
+        font-size: 14px;
       }
       
       .role-arrow {
@@ -1658,128 +1749,226 @@
     }
     
     @media (max-width: 600px) {
+      /* ===== 基本設定 ===== */
       .section {
-        padding: 60px 16px;
+        padding: 56px 20px;
       }
       
+      /* ===== ヒーローセクション ===== */
       .hero-content {
-        padding: 24px;
+        padding: 32px 20px;
       }
       
       .hero-badge {
-        padding: 10px 24px;
-        font-size: 12px;
-        margin-bottom: 40px;
+        padding: 10px 20px;
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        margin-bottom: 32px;
       }
       
       .hero-title {
-        font-size: 28px;
-        margin-bottom: 24px;
+        font-size: 26px;
+        margin-bottom: 20px;
+        line-height: 1.4;
       }
       
       .hero-subtitle {
-        font-size: 15px;
+        font-size: 14px;
+        letter-spacing: 0.08em;
       }
       
       .hero-divider {
-        margin-top: 40px;
+        width: 60px;
+        margin-top: 32px;
       }
       
+      .hero-author {
+        margin-top: 20px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+      
+      /* ===== セクションヘッダー ===== */
       .section-header {
-        margin-bottom: 40px;
+        margin-bottom: 36px;
       }
       
       .section-number {
-        font-size: 11px;
-        margin-bottom: 12px;
+        font-size: 10px;
+        letter-spacing: 0.25em;
+        margin-bottom: 10px;
+      }
+      
+      .section-number::after {
+        width: 24px;
       }
       
       .section-title {
-        font-size: 22px;
+        font-size: 20px;
+        letter-spacing: 0.02em;
       }
       
-      /* 問題点セクション */
+      /* ===== 問題点セクション ===== */
+      .problem-content {
+        gap: 40px;
+      }
+      
+      .problem-list {
+        gap: 16px;
+      }
+      
       .problem-item {
-        padding: 20px 24px;
+        padding: 18px 20px;
         min-height: auto;
+        border-radius: 14px;
+        gap: 16px;
       }
       
       .problem-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        border-radius: 8px;
       }
       
       .problem-item p {
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 1.5;
       }
       
-      /* 三者視点 */
+      /* ===== 三者視点ボックス ===== */
+      .pyramid-diagram {
+        gap: 16px;
+      }
+      
       .pyramid-level {
-        flex-direction: column;
-        padding: 20px;
-        text-align: center;
-        gap: 12px;
+        flex-direction: row;
+        padding: 18px 20px;
+        text-align: left;
+        gap: 16px;
+        border-radius: 14px;
+        align-items: center;
       }
       
       .pyramid-role {
-        width: auto;
-        min-width: 100px;
-        font-size: 11px;
-        padding: 8px 14px;
+        width: 72px;
+        min-width: 72px;
+        font-size: 10px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        text-align: center;
+        letter-spacing: 0.02em;
       }
       
       .pyramid-need {
         font-size: 13px;
         line-height: 1.5;
+        flex: 1;
       }
       
       .pyramid-needs {
-        text-align: center;
-        align-items: center;
+        text-align: left;
+        flex-direction: row;
+        gap: 12px;
+        flex: 1;
+        flex-wrap: wrap;
       }
       
+      /* ===== ポジションセクション ===== */
       .position-points {
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 14px;
       }
       
       .cycle-diagram {
-        transform: scale(0.6);
-        margin: -20px 0;
+        transform: scale(0.55);
+        margin: -30px 0;
       }
       
+      /* ===== 人とAIエージェントの役割 ===== */
+      .role-diagram {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      
+      .role-center {
+        width: 100%;
+        padding: 16px;
+        margin: 0 0 4px 0;
+        order: -1;
+        border-radius: 16px;
+      }
+      
+      .role-center-label {
+        font-size: 10px;
+        margin-bottom: 8px;
+      }
+      
+      .role-center-brand {
+        font-size: 18px;
+      }
+      
+      .role-card {
+        width: calc(50% - 6px);
+        min-width: 130px;
+        border-radius: 16px;
+      }
+      
+      .role-card-header {
+        padding: 14px 12px;
+        font-size: 15px;
+      }
+      
+      .role-card-body {
+        padding: 14px 12px;
+        gap: 10px;
+      }
+      
+      .role-item {
+        font-size: 13px;
+      }
+      
+      /* ===== 比較カード ===== */
       .compare-card {
         width: 100%;
         max-width: 100%;
+        padding: 24px 20px;
       }
       
-      /* リード獲得セクション */
+      /* ===== リード獲得セクション ===== */
+      .lead-intro {
+        margin-bottom: 32px;
+      }
+      
       .lead-intro-text {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.7;
       }
       
       .department-zone {
-        padding: 16px;
-        border-radius: 16px;
+        padding: 14px;
+        border-radius: 14px;
       }
       
       .department-zone-label {
-        font-size: 12px;
-        padding: 8px 14px;
-        gap: 8px;
+        font-size: 11px;
+        padding: 8px 12px;
+        gap: 6px;
+        border-radius: 8px;
       }
       
       .department-zone-label-icon {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
       
       .department-zone-inner {
-        padding: 16px;
-        gap: 16px;
+        padding: 14px;
+        gap: 14px;
+        border-radius: 10px;
       }
       
       .lead-card {
@@ -1787,23 +1976,34 @@
         border-radius: 12px;
       }
       
+      .lead-card-header {
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+      
       .lead-card-number {
-        width: 28px;
-        height: 28px;
-        font-size: 13px;
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
       }
       
       .lead-card-title {
-        font-size: 15px;
+        font-size: 14px;
+      }
+      
+      .lead-card-body {
+        gap: 10px;
       }
       
       .lead-card-block {
         padding: 12px;
+        border-radius: 8px;
       }
       
       .lead-card-block-label {
-        font-size: 10px;
-        margin-bottom: 6px;
+        font-size: 9px;
+        margin-bottom: 5px;
+        letter-spacing: 0.1em;
       }
       
       .lead-card-block-content {
@@ -1812,114 +2012,237 @@
       }
       
       .lead-card-cta {
-        font-size: 12px;
+        font-size: 11px;
         padding: 10px 14px;
+        border-radius: 8px;
+        margin-top: 14px;
       }
       
       .lead-connector-deep {
-        height: 24px;
+        height: 20px;
       }
       
       .lead-connector-deep svg {
-        height: 18px;
+        height: 16px;
       }
       
       .department-zone-connector {
-        height: 32px;
-        margin: 12px 0;
+        height: 28px;
+        margin: 10px 0;
       }
       
       .department-zone-connector svg {
-        height: 24px;
+        height: 20px;
       }
       
-      /* ゴール・まとめ */
+      /* ===== ゴール・まとめ ===== */
       .lead-goal {
         padding: 20px;
-        margin-top: 32px;
+        margin-top: 28px;
         border-radius: 12px;
       }
       
       .lead-goal-label {
-        font-size: 11px;
+        font-size: 10px;
+        margin-bottom: 10px;
       }
       
       .lead-goal-text {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.6;
       }
       
       .lead-questions {
-        padding: 20px;
-        margin-top: 24px;
+        padding: 18px;
+        margin-top: 20px;
         border-radius: 12px;
       }
       
       .lead-questions-title {
-        font-size: 14px;
-        margin-bottom: 16px;
+        font-size: 13px;
+        margin-bottom: 14px;
       }
       
       .lead-questions-list {
-        gap: 10px;
+        gap: 8px;
       }
       
       .lead-question-item {
         padding: 12px 14px;
         border-radius: 8px;
+        gap: 12px;
       }
       
       .lead-question-num {
-        width: 22px;
-        height: 22px;
-        font-size: 11px;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
       }
       
       .lead-question-text {
         font-size: 12px;
+        line-height: 1.4;
       }
       
       .lead-result {
-        font-size: 14px;
+        font-size: 13px;
         padding: 16px;
-        margin-top: 24px;
+        margin-top: 20px;
         border-radius: 10px;
       }
       
       .lead-result-prefix {
-        font-size: 12px;
+        font-size: 11px;
       }
       
-      /* CTAセクション */
+      /* ===== CTAセクション ===== */
+      .cta-section {
+        padding: 56px 20px;
+      }
+      
       .cta-text {
-        font-size: 18px;
+        font-size: 17px;
+        letter-spacing: 0.05em;
+      }
+      
+      .cta-underline {
+        width: 80px;
+        height: 2px;
+        margin-top: 28px;
+      }
+      
+      /* ===== フッター ===== */
+      .site-footer {
+        padding: 28px 20px;
+      }
+      
+      .footer-logo {
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        margin-bottom: 10px;
+      }
+      
+      .footer-copyright {
+        font-size: 10px;
+        letter-spacing: 0.03em;
       }
     }
     
-    /* 極小画面対応 */
+    /* ===== 極小画面対応（iPhone SE等）===== */
     @media (max-width: 380px) {
       .section {
-        padding: 48px 12px;
+        padding: 44px 16px;
+      }
+      
+      .hero-content {
+        padding: 24px 16px;
+      }
+      
+      .hero-badge {
+        padding: 8px 16px;
+        font-size: 10px;
+        margin-bottom: 28px;
       }
       
       .hero-title {
-        font-size: 24px;
+        font-size: 22px;
+      }
+      
+      .hero-subtitle {
+        font-size: 13px;
+      }
+      
+      .hero-author {
+        font-size: 11px;
       }
       
       .section-title {
-        font-size: 20px;
+        font-size: 18px;
+      }
+      
+      .problem-item {
+        padding: 14px 16px;
+      }
+      
+      .problem-item p {
+        font-size: 12px;
       }
       
       .pyramid-level {
-        padding: 16px;
+        padding: 14px 16px;
+        gap: 12px;
+      }
+      
+      .pyramid-role {
+        width: 64px;
+        min-width: 64px;
+        font-size: 9px;
+        padding: 6px 8px;
       }
       
       .pyramid-need {
         font-size: 12px;
       }
       
+      /* 役割セクション（極小画面） */
+      .role-center {
+        padding: 12px;
+      }
+      
+      .role-center-brand {
+        font-size: 16px;
+      }
+      
+      .role-card {
+        width: calc(50% - 5px);
+        min-width: 120px;
+        border-radius: 14px;
+      }
+      
+      .role-card-header {
+        padding: 12px 10px;
+        font-size: 13px;
+      }
+      
+      .role-card-body {
+        padding: 12px 10px;
+        gap: 8px;
+      }
+      
+      .role-item {
+        font-size: 12px;
+      }
+      
+      .lead-card {
+        padding: 14px;
+      }
+      
+      .lead-card-title {
+        font-size: 13px;
+      }
+      
       .lead-card-block-content {
         font-size: 11px;
+      }
+      
+      .lead-goal-text {
+        font-size: 12px;
+      }
+      
+      .lead-question-text {
+        font-size: 11px;
+      }
+      
+      .cta-text {
+        font-size: 15px;
+      }
+      
+      .footer-logo {
+        font-size: 12px;
+      }
+      
+      .footer-copyright {
+        font-size: 9px;
       }
     }
   </style>
@@ -1936,6 +2259,7 @@
     </h1>
     <p class="hero-subtitle">現場で直せて、経営に残るExcel資産</p>
     <div class="hero-divider"></div>
+    <p class="hero-author">営業企画部　塩崎</p>
   </div>
 </section>
 
@@ -2233,7 +2557,7 @@
                 <div class="lead-card-block-content">WEBサイトへアクセス／QRコード読み取り</div>
               </div>
             </div>
-            <div class="lead-card-cta">→ チェックリストをダウンロード</div>
+            <div class="lead-card-cta">→ dbSheetの言語化</div>
           </div>
           
           <div class="lead-connector-deep">
@@ -2260,7 +2584,7 @@
                 <div class="lead-card-block-content">デモ予約ボタンをクリック</div>
               </div>
             </div>
-            <div class="lead-card-cta">→ 3分動画を視聴する</div>
+            <div class="lead-card-cta">→ YouTubeチャンネルのリニューアル</div>
           </div>
           
           <div class="lead-connector-deep">
@@ -2287,7 +2611,7 @@
                 <div class="lead-card-block-content">担当者同席の商談を依頼</div>
               </div>
             </div>
-            <div class="lead-card-cta">→ デモを予約する</div>
+            <div class="lead-card-cta">→ デモ機のUI見直し</div>
           </div>
           
           <div class="lead-connector-deep">
@@ -2314,7 +2638,7 @@
                 <div class="lead-card-block-content">社内で回覧／決裁者に共有</div>
               </div>
             </div>
-            <div class="lead-card-cta">→ 社内提案テンプレートを取得</div>
+            <div class="lead-card-cta">→ 資料コンテンツ追加</div>
           </div>
         </div>
       </div>
@@ -2405,6 +2729,14 @@
     <div class="cta-underline"></div>
   </div>
 </section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">NEWCOM</div>
+    <p class="footer-copyright">© 2026 NEWCOM Inc. All Rights Reserved.</p>
+  </div>
+</footer>
 
 </body>
 </html>
