@@ -756,125 +756,301 @@
       color: #2563eb;
     }
     
-    /* ===== Lead Section ===== */
+    /* ===== Lead Section (Deep Dive Version) ===== */
     .lead-section {
-      background: #ffffff;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
     }
     
-    .lead-flow {
+    .lead-intro {
+      text-align: center;
+      margin-bottom: 64px;
+      padding: 32px;
+      background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      border-radius: 16px;
+      color: #ffffff;
+    }
+    
+    .lead-intro-text {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.8;
+    }
+    
+    .lead-flow-deep {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 0;
-      max-width: 420px;
-      margin: 0 auto 56px;
+      margin-bottom: 64px;
     }
     
-    .lead-step {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      width: 100%;
-      padding: 22px 32px;
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border: 1px solid #bfdbfe;
-      border-radius: 14px;
+    .lead-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .lead-step:hover {
-      transform: translateX(12px);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+    .lead-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
     }
     
-    .lead-step-final {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      border-color: #1d4ed8;
-      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+    .lead-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
     }
     
-    .lead-step-final:hover {
-      transform: translateX(12px) scale(1.02);
-    }
-    
-    .lead-step-final .lead-step-number {
-      background: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-    }
-    
-    .lead-step-final .lead-step-label {
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 17px;
-    }
-    
-    .lead-step-number {
-      width: 36px;
-      height: 36px;
+    .lead-card-number {
+      width: 44px;
+      height: 44px;
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: #ffffff;
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    
+    .lead-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    
+    .lead-card-body {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .lead-card-block {
+      padding: 20px;
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+    
+    .lead-card-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    
+    .lead-card-block-content {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    
+    .lead-card-block-experience {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 1px solid #bfdbfe;
+    }
+    
+    .lead-card-block-experience .lead-card-block-label {
+      color: #2563eb;
+    }
+    
+    .lead-card-block-mind {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 1px solid #bbf7d0;
+    }
+    
+    .lead-card-block-mind .lead-card-block-label {
+      color: #059669;
+    }
+    
+    .lead-card-block-action {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #fcd34d;
+    }
+    
+    .lead-card-block-action .lead-card-block-label {
+      color: #d97706;
+    }
+    
+    .lead-card-cta {
+      margin-top: 20px;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    
+    .lead-connector-deep {
+      display: flex;
+      justify-content: center;
+      padding: 16px 0;
+    }
+    
+    .lead-connector-deep svg {
+      width: 24px;
+      height: 32px;
+      color: #cbd5e1;
+    }
+    
+    .lead-card-final {
+      background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      border-color: #1e3a5f;
+    }
+    
+    .lead-card-final .lead-card-header {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .lead-card-final .lead-card-number {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .lead-card-final .lead-card-title {
+      color: #ffffff;
+    }
+    
+    .lead-card-final .lead-card-block {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .lead-card-final .lead-card-block-label {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .lead-card-final .lead-card-block-content {
+      color: #ffffff;
+    }
+    
+    .lead-goal {
+      background: linear-gradient(135deg, #059669, #047857);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    
+    .lead-goal-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+    
+    .lead-goal-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    
+    .lead-questions {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+    
+    .lead-questions-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #2563eb;
+      display: inline-block;
+    }
+    
+    .lead-questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .lead-question-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: 12px;
+      border-left: 4px solid #2563eb;
+    }
+    
+    .lead-question-num {
+      width: 28px;
+      height: 28px;
+      background: #2563eb;
+      color: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
       font-weight: 700;
       flex-shrink: 0;
     }
     
-    .lead-step-label {
+    .lead-question-text {
       font-size: 15px;
-      color: #1e40af;
+      color: #334155;
+      line-height: 1.6;
       font-weight: 500;
-    }
-    
-    .lead-connector {
-      width: 4px;
-      height: 28px;
-      background: linear-gradient(180deg, #bfdbfe, #93c5fd);
-      position: relative;
-    }
-    
-    .lead-connector::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 8px solid #93c5fd;
-    }
-    
-    .lead-connector-final {
-      height: 36px;
-      background: linear-gradient(180deg, #3b82f6, #2563eb);
-    }
-    
-    .lead-connector-final::after {
-      border-top-color: #2563eb;
     }
     
     .lead-result {
       text-align: center;
-      padding: 32px;
+      padding: 40px;
       background: linear-gradient(135deg, #fef2f2, #fee2e2);
-      border-radius: 16px;
-      max-width: 420px;
-      margin: 0 auto;
+      border-radius: 20px;
+      margin-top: 48px;
+      border: 1px solid #fecaca;
     }
     
     .lead-result-prefix {
       display: block;
       font-size: 14px;
       color: #64748b;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     
     .lead-result-main {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 800;
       color: #dc2626;
+    }
+    
+    @media (max-width: 900px) {
+      .lead-card-body {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .lead-card {
+        padding: 24px;
+      }
+      
+      .lead-questions {
+        padding: 28px;
+      }
     }
     
     /* ===== CTA Section ===== */
@@ -1260,7 +1436,7 @@
   </div>
 </section>
 
-<!-- ===== Lead Section ===== -->
+<!-- ===== Lead Section (Deep Dive Version) ===== -->
 <section class="section lead-section">
   <div class="section-container">
     <div class="section-header">
@@ -1268,43 +1444,165 @@
       <h2 class="section-title">リード獲得自動化の流れ</h2>
     </div>
     
-    <div class="lead-flow">
-      <div class="lead-step">
-        <div class="lead-step-number">1</div>
-        <div class="lead-step-content">
-          <span class="lead-step-label">サムネで理解</span>
+    <div class="lead-intro">
+      <p class="lead-intro-text">2026年の勝ち筋は「体験を設計して、商談を自動で起こす」<br>各段階で"何を体験させるか"を明確にする</p>
+    </div>
+    
+    <div class="lead-flow-deep">
+      
+      <!-- Step 1: 理解 -->
+      <div class="lead-card">
+        <div class="lead-card-header">
+          <div class="lead-card-number">1</div>
+          <div class="lead-card-title">サムネで理解</div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-card-block lead-card-block-experience">
+            <div class="lead-card-block-label">提供する体験</div>
+            <div class="lead-card-block-content">展示会サムネ・WEBトップで「何ができるか」を3秒で伝える</div>
+          </div>
+          <div class="lead-card-block lead-card-block-mind">
+            <div class="lead-card-block-label">心理変化</div>
+            <div class="lead-card-block-content">「Excelのまま、現場で直せるのか」と認識する</div>
+          </div>
+          <div class="lead-card-block lead-card-block-action">
+            <div class="lead-card-block-label">次の行動</div>
+            <div class="lead-card-block-content">WEBサイトへアクセス／QRコード読み取り</div>
+          </div>
+        </div>
+        <div class="lead-card-cta">→ チェックリストをダウンロード</div>
+      </div>
+      
+      <div class="lead-connector-deep">
+        <svg viewBox="0 0 24 32" fill="none"><path d="M12 0V28M12 28L4 20M12 28L20 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      
+      <!-- Step 2: 共感 -->
+      <div class="lead-card">
+        <div class="lead-card-header">
+          <div class="lead-card-number">2</div>
+          <div class="lead-card-title">WEB・動画で共感</div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-card-block lead-card-block-experience">
+            <div class="lead-card-block-label">提供する体験</div>
+            <div class="lead-card-block-content">3分動画で「改善が止まる理由」と「解決策」を見せる</div>
+          </div>
+          <div class="lead-card-block lead-card-block-mind">
+            <div class="lead-card-block-label">心理変化</div>
+            <div class="lead-card-block-content">「うちも同じ課題がある」と自分ごと化する</div>
+          </div>
+          <div class="lead-card-block lead-card-block-action">
+            <div class="lead-card-block-label">次の行動</div>
+            <div class="lead-card-block-content">デモ予約ボタンをクリック</div>
+          </div>
+        </div>
+        <div class="lead-card-cta">→ 3分動画を視聴する</div>
+      </div>
+      
+      <div class="lead-connector-deep">
+        <svg viewBox="0 0 24 32" fill="none"><path d="M12 0V28M12 28L4 20M12 28L20 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      
+      <!-- Step 3: 体感 -->
+      <div class="lead-card">
+        <div class="lead-card-header">
+          <div class="lead-card-number">3</div>
+          <div class="lead-card-title">デモで体感</div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-card-block lead-card-block-experience">
+            <div class="lead-card-block-label">提供する体験</div>
+            <div class="lead-card-block-content">デモ機で「入力→即反映→変更→記録」の一連を触る</div>
+          </div>
+          <div class="lead-card-block lead-card-block-mind">
+            <div class="lead-card-block-label">心理変化</div>
+            <div class="lead-card-block-content">「これなら現場で回せる」と確信する</div>
+          </div>
+          <div class="lead-card-block lead-card-block-action">
+            <div class="lead-card-block-label">次の行動</div>
+            <div class="lead-card-block-content">担当者同席の商談を依頼</div>
+          </div>
+        </div>
+        <div class="lead-card-cta">→ デモを予約する</div>
+      </div>
+      
+      <div class="lead-connector-deep">
+        <svg viewBox="0 0 24 32" fill="none"><path d="M12 0V28M12 28L4 20M12 28L20 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      
+      <!-- Step 4: 整理 -->
+      <div class="lead-card">
+        <div class="lead-card-header">
+          <div class="lead-card-number">4</div>
+          <div class="lead-card-title">パンフレットで整理</div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-card-block lead-card-block-experience">
+            <div class="lead-card-block-label">提供する体験</div>
+            <div class="lead-card-block-content">持ち帰り資料で「社内説明用の整理」ができる</div>
+          </div>
+          <div class="lead-card-block lead-card-block-mind">
+            <div class="lead-card-block-label">心理変化</div>
+            <div class="lead-card-block-content">「上司・経営に説明できる」と準備が整う</div>
+          </div>
+          <div class="lead-card-block lead-card-block-action">
+            <div class="lead-card-block-label">次の行動</div>
+            <div class="lead-card-block-content">社内で回覧／決裁者に共有</div>
+          </div>
+        </div>
+        <div class="lead-card-cta">→ 社内提案テンプレートを取得</div>
+      </div>
+      
+      <div class="lead-connector-deep">
+        <svg viewBox="0 0 24 32" fill="none"><path d="M12 0V28M12 28L4 20M12 28L20 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      
+      <!-- Step 5: 商談 -->
+      <div class="lead-card lead-card-final">
+        <div class="lead-card-header">
+          <div class="lead-card-number">5</div>
+          <div class="lead-card-title">商談</div>
+        </div>
+        <div class="lead-card-body">
+          <div class="lead-card-block">
+            <div class="lead-card-block-label">提供する体験</div>
+            <div class="lead-card-block-content">課題特定済みの状態で、導入設計を一緒に行う</div>
+          </div>
+          <div class="lead-card-block">
+            <div class="lead-card-block-label">心理変化</div>
+            <div class="lead-card-block-content">「導入後の運用イメージ」が具体化する</div>
+          </div>
+          <div class="lead-card-block">
+            <div class="lead-card-block-label">次の行動</div>
+            <div class="lead-card-block-content">見積もり依頼／トライアル開始</div>
+          </div>
         </div>
       </div>
-      <div class="lead-connector"></div>
       
-      <div class="lead-step">
-        <div class="lead-step-number">2</div>
-        <div class="lead-step-content">
-          <span class="lead-step-label">WEB・動画で共感</span>
+    </div>
+    
+    <!-- Goal -->
+    <div class="lead-goal">
+      <div class="lead-goal-label">商談のゴール</div>
+      <div class="lead-goal-text">商談で話すことが決まっている状態<br>＝ 担当者は誰か／どこまで内製するか／AIエージェントの役割</div>
+    </div>
+    
+    <!-- Questions -->
+    <div class="lead-questions">
+      <div class="lead-questions-title">商談の質が上がる理由</div>
+      <div class="lead-questions-list">
+        <div class="lead-question-item">
+          <div class="lead-question-num">1</div>
+          <div class="lead-question-text">どの変更を"現場側"で回したいか、決まっている</div>
         </div>
-      </div>
-      <div class="lead-connector"></div>
-      
-      <div class="lead-step">
-        <div class="lead-step-number">3</div>
-        <div class="lead-step-content">
-          <span class="lead-step-label">デモで体感</span>
+        <div class="lead-question-item">
+          <div class="lead-question-num">2</div>
+          <div class="lead-question-text">どの判断を"経営側"に即反映したいか、決まっている</div>
         </div>
-      </div>
-      <div class="lead-connector"></div>
-      
-      <div class="lead-step">
-        <div class="lead-step-number">4</div>
-        <div class="lead-step-content">
-          <span class="lead-step-label">パンフレットで整理</span>
-        </div>
-      </div>
-      <div class="lead-connector lead-connector-final"></div>
-      
-      <div class="lead-step lead-step-final">
-        <div class="lead-step-number">5</div>
-        <div class="lead-step-content">
-          <span class="lead-step-label">商談</span>
+        <div class="lead-question-item">
+          <div class="lead-question-num">3</div>
+          <div class="lead-question-text">内製のために必要な役割（担当者／AIエージェント）が明確になっている</div>
         </div>
       </div>
     </div>
@@ -1319,7 +1617,7 @@
 <!-- ===== CTA Section ===== -->
 <section class="cta-section">
   <div class="cta-content">
-    <p class="cta-text">まずはデモで体感してください</p>
+    <p class="cta-text">物売り → 事売り → 体験売り</p>
     <div class="cta-underline"></div>
   </div>
 </section>
